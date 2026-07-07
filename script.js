@@ -1,4 +1,25 @@
 (function () {
+  var toggle = document.querySelector('.nav-toggle');
+  var header = document.querySelector('.site-header');
+
+  if (toggle && header) {
+    toggle.addEventListener('click', function () {
+      var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      header.classList.toggle('nav-open', !isOpen);
+    });
+
+    // Close the menu when a nav link is chosen (matters for same-page anchors).
+    header.querySelectorAll('.site-nav a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        toggle.setAttribute('aria-expanded', 'false');
+        header.classList.remove('nav-open');
+      });
+    });
+  }
+})();
+
+(function () {
   var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
   var revealEls = document.querySelectorAll('.reveal');
   var STAGGER_MS = 110;

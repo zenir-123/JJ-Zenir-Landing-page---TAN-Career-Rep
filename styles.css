@@ -180,6 +180,16 @@ h1 em, h2 em {
   transform: translateY(-2px);
 }
 
+.btn-ghost-dark {
+  color: var(--black);
+  border-color: rgba(0, 0, 0, 0.35);
+}
+
+.btn-ghost-dark:hover {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: var(--black);
+}
+
 .btn-large {
   font-size: 1.05rem;
   padding: 1.05rem 2.1rem;
@@ -216,6 +226,78 @@ h1 em, h2 em {
   font-weight: 600;
   color: var(--white);
   text-decoration: none;
+}
+
+/* ---------- Nav ---------- */
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.site-nav a {
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.35rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.site-nav a:hover {
+  color: var(--white);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--white);
+  border-bottom-color: var(--scarlet-bright);
+}
+
+.site-nav a:focus-visible {
+  outline: 3px solid var(--scarlet-bright);
+  outline-offset: 3px;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.nav-toggle:focus-visible {
+  outline: 3px solid var(--scarlet-bright);
+  outline-offset: 3px;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-open .nav-toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-open .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-open .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ---------- Hero ---------- */
@@ -444,6 +526,166 @@ h1 em, h2 em {
   margin-bottom: 0.85rem;
 }
 
+.services-links {
+  justify-content: center;
+  margin-top: 2.75rem;
+}
+
+/* ---------- Page hero (compact hero for subpages) ---------- */
+.page-hero .hero-inner {
+  grid-template-columns: 1fr;
+  padding: 3.5rem 1.5rem 4rem;
+}
+
+.page-hero h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  max-width: 780px;
+}
+
+/* ---------- Product sections (services pages) ---------- */
+.product {
+  position: relative;
+  background: var(--white);
+}
+
+.product-alt {
+  background: var(--grey-bg);
+}
+
+.product-alt .service-card {
+  background: var(--white);
+}
+
+.product-inner {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.product-copy h2 {
+  margin-bottom: 1.25rem;
+}
+
+.product-copy .lede {
+  max-width: 560px;
+}
+
+.fit-label {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--black);
+  margin: 1.75rem 0 0.6rem;
+}
+
+.fit-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.fit-list li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.fit-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 0.55rem;
+  height: 2px;
+  background: var(--scarlet);
+}
+
+.product-note {
+  margin-top: 1.5rem;
+  padding: 0.9rem 1.25rem;
+  background: rgba(187, 0, 0, 0.06);
+  border-left: 3px solid var(--scarlet);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.97rem;
+  max-width: 560px;
+}
+
+.product-help {
+  position: sticky;
+  top: 92px;
+}
+
+.product-help h3 {
+  margin-bottom: 1rem;
+}
+
+.help-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.help-list li {
+  position: relative;
+  padding-left: 1.85rem;
+  font-size: 0.99rem;
+  line-height: 1.55;
+}
+
+.help-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--scarlet);
+  font-weight: 700;
+}
+
+.service-featured .help-list li::before {
+  color: var(--scarlet-bright);
+}
+
+.product-cta-link {
+  display: inline-block;
+  color: var(--scarlet);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.service-featured .product-cta-link {
+  color: var(--scarlet-bright);
+}
+
+.product-cta-link:focus-visible {
+  outline: 3px solid var(--scarlet-bright);
+  outline-offset: 3px;
+}
+
+/* ---------- About page ---------- */
+.about-page {
+  background: var(--grey-bg);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.about-grid p + p {
+  margin-top: 1.25rem;
+}
+
+.about-portrait {
+  display: flex;
+  justify-content: center;
+}
+
 /* ---------- Closing CTA ---------- */
 .cta-closing {
   position: relative;
@@ -552,6 +794,75 @@ h1 em, h2 em {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 0.5rem 1.5rem 1rem;
+    background: var(--black-deep);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 18px 32px rgba(0, 0, 0, 0.45);
+  }
+
+  .nav-open .site-nav {
+    display: flex;
+  }
+
+  .site-nav a {
+    padding: 0.85rem 0;
+    font-size: 1.05rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .site-nav a[aria-current="page"] {
+    border-bottom-color: var(--scarlet-bright);
+  }
+
+  .header-inner {
+    gap: 0.75rem;
+  }
+
+  .page-hero .hero-inner {
+    padding-top: 3rem;
+  }
+
+  .page-hero h1 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .product-inner {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .product-help {
+    position: static;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-portrait {
+    order: -1;
+  }
+
+  .about-portrait .portrait-stage {
+    width: min(240px, 62vw);
+  }
+
   .hero-inner {
     grid-template-columns: 1fr;
     text-align: center;
